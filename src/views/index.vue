@@ -1,0 +1,56 @@
+<template>
+  <div class="index">
+    <ul>
+      <router-link :to="{ path: '/scroll', query: { subjectId: 2 } }" tag="li">上拉加载，下拉刷新</router-link>
+      <router-link :to="{ path: '/toast', query: { subjectId: 1 } }" tag="li">toast弹框</router-link>
+    </ul>
+  </div>
+</template>
+
+<script>
+
+import { publicPost } from '../js/api/index.js';
+import getApiUrl from '../js/api/apiUrlList';
+
+export default {
+    name: 'index',
+    data () {
+        return {
+            users: []
+        };
+    },
+    created () {
+    },
+    methods: {
+        init () {
+
+        },
+        getUsers () {
+            let params = {
+                openid: 'o6QO61XlZ8CMXQYvMmwjgDv9uMeI'
+            };
+            return publicPost(getApiUrl('userList'), params).then((res) => {
+                console.warn('#######', res);
+            }).catch(() => {
+                console.warn('error');
+            });
+        }
+    }
+};
+</script>
+
+<style rel="stylesheet/scss" lang="scss">
+    @import "../scss/variables";
+
+    .index {
+      width: 100%;
+      height: 100%;
+      padding: pxtorem(20px);
+      li {
+        line-height: pxtorem(40px);
+        font-size: pxtorem(16px);
+        border-bottom: 1px solid #dddee3;
+      }
+    }
+
+</style>
