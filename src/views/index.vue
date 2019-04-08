@@ -9,7 +9,7 @@
 
 <script>
 
-import { publicPost } from '../js/api/index.js';
+import { publicPost, publicGet } from '../js/api/index.js';
 import getApiUrl from '../js/api/apiUrlList';
 
 export default {
@@ -20,16 +20,18 @@ export default {
         };
     },
     created () {
+      this.getList();
     },
     methods: {
         init () {
 
         },
-        getUsers () {
-            let params = {
-                openid: 'o6QO61XlZ8CMXQYvMmwjgDv9uMeI'
-            };
-            return publicPost(getApiUrl('userList'), params).then((res) => {
+        getList () {
+            let params = {};
+            params.publisherId = '';
+            params.userId = '';
+            params.tmails = '';
+            return publicPost(getApiUrl('getContentList'), params).then((res) => {
                 console.warn('#######', res);
             }).catch(() => {
                 console.warn('error');

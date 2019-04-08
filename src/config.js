@@ -1,12 +1,14 @@
-// let getQueryStringByName = function (name) {
-//     let result = document.location.search.match(new RegExp('[\?\&]' + name + '=([^\&]+)', 'i'));
-//     if (result == null || result.length < 1) return '';
-//     return result[1];
-// };
+// 全局变量
 
 const config = {
     title: 'frame',
     url: '',
 };
+
+if (process.env.NODE_ENV === 'development') {   // 开发环境
+    config.url = '';
+} else if (process.env.NODE_ENV === 'production') { // 如果是线上环境，修改对应的参数.
+    config.url = '';
+}
 
 export default config;

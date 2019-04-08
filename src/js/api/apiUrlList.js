@@ -11,7 +11,8 @@ let serveUrl = config.url;
 
 const apiUrlList = {
     // test
-    test: 'test'
+    getContentList: '/content/list',
+    getContentDetail: '/content/detail'
 };
 function getApiUrl (apiName) {
     return serveUrl + apiUrlList[apiName];
