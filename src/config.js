@@ -6,7 +6,7 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'development') {   // 开发环境
-    config.url = 'http://172.28.43.107:8080/piper';
+    config.url = '';
 } else if (process.env.NODE_ENV === 'production') { // 如果是线上环境，修改对应的参数.
     config.url = '';
 }
