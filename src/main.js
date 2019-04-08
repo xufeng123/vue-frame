@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router/index';
 import { sync } from 'vuex-router-sync';
 import store from './store/index';
+require('./js/static/fastclick'); // get fastclick
 import Toast from './vendor/v-toast.js';
 import axios from 'axios';
 
