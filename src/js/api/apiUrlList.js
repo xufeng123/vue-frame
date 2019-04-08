@@ -9,10 +9,9 @@ import config from '../../config';
 
 let serveUrl = config.url;
 
+// 接口列表统一入口
 const apiUrlList = {
-    // test
-    getContentList: '/content/list',
-    getContentDetail: '/content/detail'
+    getContentList: '/content/list'
 };
 function getApiUrl (apiName) {
     return serveUrl + apiUrlList[apiName];
