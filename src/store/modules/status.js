@@ -1,7 +1,7 @@
 import * as types from '../types';
-import config from '../../config';
-import { publicPost } from '../../js/api/index.js';
-import getApiUrl from '../../js/api/apiUrlList';
+// import config from '../../config';
+// import { publicPost } from '../../js/api/index.js';
+// import getApiUrl from '../../js/api/apiUrlList';
 
 const state = {
     loading: 0,
