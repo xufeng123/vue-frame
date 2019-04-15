@@ -6,6 +6,9 @@ import store from './store/index';
 require('./js/static/fastclick'); // get fastclick
 import Toast from './vendor/v-toast.js';
 import axios from 'axios';
+import i18n from './i18n/index';
+
+Vue.use(i18n);
 
 // 注册 fastclick
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,6 +23,7 @@ sync(store, router);
 Vue.use(Toast);
 
 new Vue({
+    i18n,
     router,
     store,
     render: h => h(App)
