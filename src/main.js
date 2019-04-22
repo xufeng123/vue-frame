@@ -10,6 +10,8 @@ import i18n from './i18n/index';
 
 Vue.use(i18n);
 
+Vue.config.productionTip = false;
+
 // 注册 fastclick
 document.addEventListener('DOMContentLoaded', function () {
     if (window.FastClick) window.FastClick.attach(document.body);

@@ -1,5 +1,4 @@
 // 全局变量
-
 const config = {
     instance: 100000,   // 设置请求超时
     title: 'frame',
