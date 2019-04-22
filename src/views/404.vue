@@ -6,22 +6,22 @@
 
 <script>
 
-export default {
-    components: { },
+    export default {
+        components: { },
 
-    data () {
-        return {
+        data () {
+            return {
 
-        };
-    },
+            };
+        },
 
-    mounted () {
-    },
+        mounted () {
+        },
 
-    methods: {
+        methods: {
 
-    }
-};
+        }
+    };
 </script>
 
 <style rel="stylesheet/scss" lang="scss">

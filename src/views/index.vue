@@ -10,7 +10,7 @@
 
 <script>
 
-import { publicPost, publicGet } from '../js/api/index.js';
+import { publicPost } from '../js/api/index.js';
 import getApiUrl from '../js/api/apiUrlList';
 
 export default {
