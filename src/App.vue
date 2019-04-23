@@ -12,15 +12,20 @@
             };
         },
         mounted () {
+            this.loadingObj = document.getElementById('loading-wrapper');
         },
         watch: {
+            '$store.state.status.loading' (val) {
+                if (this.loadingObj && val) {
+                    this.loadingObj.style.display = 'block';
+                } else if (this.loadingObj && !val) {
+                    this.loadingObj.style.display = 'none';
+                }
+            }
         },
         computed: {
         },
         methods: {
-            goBack () {
-                this.$router.go(-1);
-            }
         }
     };
 </script>

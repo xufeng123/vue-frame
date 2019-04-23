@@ -1,14 +1,6 @@
-docs/*.js
-build/*.js
-config/*.js
 node_modules/*.js
-static/js/vendor/*.js
-src/js/utils/dom.js
-src/js/utils/emitter.js
-src/js/utils/draggable.js
-src/js/utils/translate.js
-src/js/utils/popup
-src/vendor/v-video-play.vue
+src/js/utils/*.js
 src/vendor/*.vue
 src/vendor/*.js
 src/js/static/*.js
+public/index.html

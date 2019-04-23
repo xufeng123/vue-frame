@@ -1,11 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
-// import store from '../store/index';
-import { getCookie } from '../js/cookie/index';
-// import { publicPost } from '../js/api/index';
-// import getApiUrl from '../js/api/apiUrlList';
 import CONFIG from '../config';
+import store from '../store';
 
 Vue.use(VueRouter);
 
@@ -20,6 +17,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    store.commit('OPEN_LOADING');
     next();
 });
 
@@ -38,7 +36,28 @@ router.afterEach(route => {
     } else {
         router.setTitle(CONFIG.title);
     }
+    try { // 路由跳转，隐藏菊花~
+        if (store && store.state) {
+            store.dispatch('CLOSE_LOADING');
+        }
+    } catch (e) {
+        console.error('router.afterEach: ', e);
+    }
 });
+
+router.direct = (to, from) => {
+    if (from && to) {
+        if (from.path === '/' && !from.name) return 0;
+        if (from.query && !from.query.timestamp) return 1;
+        if (to.query && !to.query.timestamp) return -1;
+        if (from.query && to.query && to.query.timestamp < from.query.timestamp) return -1;
+        else return 1;
+    }
+    if (store.getters.position.hasOwnProperty(router.currentRoute.query.timestamp)) {
+        return 0; // 回退
+    }
+    return 1; // 进入
+};
 
 let p = router.push,
     r = router.replace;
@@ -46,9 +65,8 @@ router.push = function (params) {
     let tag = Date.now();
     if (params.query) {
         params.query.timestamp = tag;
-        params.query.shopId = CONFIG.shopId;
     } else {
-        params.query = {timestamp: tag, shopId: CONFIG.shopId};
+        params.query = {timestamp: tag};
     }
     p.call(router, params);
 };
@@ -56,9 +74,8 @@ router.replace = function (params) {
     let tag = Date.now();
     if (params.query) {
         params.query.timestamp = tag;
-        params.query.shopId = CONFIG.shopId;
     } else {
-        params.query = {timestamp: tag, shopId: CONFIG.shopId};
+        params.query = {timestamp: tag};
     }
     r.call(router, params);
 };
