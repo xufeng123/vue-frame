@@ -18,6 +18,16 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     store.commit('OPEN_LOADING');
+    try {
+        if (store.state) { // 获取"有效"滚动条容器的滚动位置
+            /** 保存位置信息，用于判断路由的前进后退 */
+            let key = from.query.timestamp,
+                obj = Object.create(null);
+            store.commit('SET_POSITION', {key: key, val: obj});
+        }
+    } catch (e) {
+        console.error('router.beforeEach: ', e);
+    }
     next();
 });
 
@@ -45,14 +55,7 @@ router.afterEach(route => {
     }
 });
 
-router.direct = (to, from) => {
-    if (from && to) {
-        if (from.path === '/' && !from.name) return 0;
-        if (from.query && !from.query.timestamp) return 1;
-        if (to.query && !to.query.timestamp) return -1;
-        if (from.query && to.query && to.query.timestamp < from.query.timestamp) return -1;
-        else return 1;
-    }
+router.direct = () => {
     if (store.getters.position.hasOwnProperty(router.currentRoute.query.timestamp)) {
         return 0; // 回退
     }

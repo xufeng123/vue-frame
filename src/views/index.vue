@@ -2,6 +2,7 @@
   <div class="index">
     <h2>{{$t('test')}}</h2>
     <ul>
+      <li v-for="item in 20">{{item}}</li>
       <router-link :to="{ path: '/scroll', query: { subjectId: 2 } }" tag="li">上拉加载，下拉刷新</router-link>
       <router-link :to="{ path: '/toast', query: { subjectId: 1 } }" tag="li">toast弹框</router-link>
     </ul>

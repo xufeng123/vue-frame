@@ -77,6 +77,7 @@ export function hasClass (el, cls) {
 
 /* istanbul ignore next */
 export function addClass (el, cls) {
+    console.log(el, 'elelelelelelel');
     if (!el) return;
     var curClass = el.className,
         classes = (cls || '').split(' ');
