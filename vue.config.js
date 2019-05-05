@@ -12,7 +12,7 @@ module.exports = {
         };
     },
     devServer: {
-        port: 8088,     // 端口
+        port: 8080,     // 端口
         // host: '',    // 不配置默认为本地的ip
         open: true    // 配置自动打开浏览器
         // proxy: 'http://localhost:4000' // 配置跨域处理,只有一个代理
