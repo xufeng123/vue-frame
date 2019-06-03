@@ -10,6 +10,12 @@ module.exports = {
                 'vue$': 'vue/dist/vue.esm.js'
             }
         };
+        config.externals = {
+            'vue': 'Vue',
+            'vue-router': 'VueRouter',
+            'axios': 'axios',
+            'vuex': 'Vuex'
+        };
     },
     devServer: {
         port: 8080,     // 端口
