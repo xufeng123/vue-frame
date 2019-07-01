@@ -6,7 +6,7 @@ export function getQueryStringByName (name) {
     }
     return result[1];
 };
-
+/** ==================== 截取URL参数相关 ==================== */
 export function getUrlQueryStringByName (url, name) {
     let urlNew = '?' + url.split('?')[1];
     var result = urlNew.match(new RegExp('[\?\&]' + name + '=([^\&]+)', 'i'));
